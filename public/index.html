@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Sistema de Matérias</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Bem-vindo ao Mini Sistema de Matérias</h1>
+    <button id="criar-materia">Criar Matéria com IA</button>
+
+    <script>
+        $(document).ready(function() {
+            $('#criar-materia').click(function() {
+                $.ajax({
+                    url: '/api/materia', // Corrigido para o endpoint correto
+                    method: 'POST', // Corrigido para POST
+                    success: function(data) {
+                        // Supondo que o JSON retornado tenha um campo 'id' para a matéria
+                        const materiaId = data.id;
+                        window.location.href = `materia.html?id=${materiaId}`;
+                    },
+                    error: function(err) {
+                        console.error('Erro ao criar matéria:', err);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

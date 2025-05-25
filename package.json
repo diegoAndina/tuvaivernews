@@ -1,0 +1,16 @@
+{
+  "name": "mini-sistema-materias",
+  "version": "1.0.0",
+  "description": "Um mini sistema para gerar matérias utilizando IA.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "axios": "^0.21.1"
+  },
+  "author": "",
+  "license": "ISC"
+}

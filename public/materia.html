@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matéria Gerada</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="materia-container">
+        <h1 id="titulo-materia"></h1>
+        <p id="conteudo-materia"></p>
+    </div>
+
+    <script>
+        // Função para carregar a matéria a partir do ID na URL
+        function carregarMateria() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if (id) {
+                fetch(`/api/materia/${id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('titulo-materia').innerText = data.titulo;
+                        document.getElementById('conteudo-materia').innerText = data.conteudo;
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar a matéria:', error);
+                    });
+            } else {
+                document.getElementById('materia-container').innerText = 'Matéria não encontrada.';
+            }
+        }
+
+        // Chama a função para carregar a matéria ao carregar a página
+        window.onload = carregarMateria;
+    </script>
+</body>
+</html>
